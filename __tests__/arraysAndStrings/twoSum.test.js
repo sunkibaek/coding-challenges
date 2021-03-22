@@ -1,4 +1,4 @@
-const twoSum = require("../src/twoSum");
+const twoSum = require("../../src/arraysAndStrings/twoSum");
 
 describe("twoSum", () => {
   describe("with undefined", () => {

@@ -1,4 +1,4 @@
-const strDiff = require("../src/strDiff");
+const strDiff = require("../../src/arraysAndStrings/strDiff");
 
 describe("strDiff", () => {
   describe("with undefined", () => {
