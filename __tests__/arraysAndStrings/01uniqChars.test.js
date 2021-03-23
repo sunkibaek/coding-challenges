@@ -1,4 +1,4 @@
-const uniqChars = require("../../src/arraysAndStrings/uniqChars");
+const uniqChars = require("../../src/arraysAndStrings/01uniqChars");
 
 describe("uniqChars", () => {
   describe("with undefined", () => {

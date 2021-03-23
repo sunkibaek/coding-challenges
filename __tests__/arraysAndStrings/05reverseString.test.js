@@ -1,4 +1,4 @@
-const reverseString = require("../../src/arraysAndStrings/reverseString");
+const reverseString = require("../../src/arraysAndStrings/05reverseString");
 
 describe("reverseString", () => {
   describe("with undefined", () => {
