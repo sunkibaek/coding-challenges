@@ -1,0 +1,3 @@
+describe("PriorityQueue", () => {
+  describe("#insert", () => {});
+});
