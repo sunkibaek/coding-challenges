@@ -70,28 +70,36 @@ class LinkedList {
   };
 
   findLoopStart = () => {
-    let currentA = this.head;
+    let slowHead = this.head;
+    let mode = "doublespeed";
 
-    if (!this.head || !this.head.next) {
+    if (!this.head) {
       return;
     }
 
-    let currentB = this.head.next;
+    let fastHead = this.head.next;
 
-    while (currentA && currentB) {
-      currentA.mark = true;
-
-      if (currentB.mark) {
-        return currentB;
+    while (slowHead && fastHead && fastHead.next) {
+      if (mode === "doublespeed" && slowHead === fastHead) {
+        slowHead = this.head;
+        fastHead = fastHead.next;
+        mode = "singlespeed";
+        continue;
       }
 
-      currentA = currentA.next;
-
-      if (!currentB.next) {
-        return;
+      if (mode === "singlespeed" && slowHead === fastHead) {
+        return slowHead;
       }
 
-      currentB = currentB.next.next;
+      if (mode === "doublespeed") {
+        slowHead = slowHead.next;
+        fastHead = fastHead.next.next;
+      }
+
+      if (mode === "singlespeed") {
+        slowHead = slowHead.next;
+        fastHead = fastHead.next;
+      }
     }
 
     return;
