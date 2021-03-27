@@ -1,34 +1,68 @@
 class Stacks {
   data = [];
   size = 0;
+  count = 0;
 
   constructor(count, size) {
-    this.data = new Array(count).fill().map(() => new Array());
+    this.count = count;
     this.size = size;
   }
 
   push = (index, value) => {
-    const stack = this.data[index];
+    const startIndex = index * this.size;
+    const endIndex = startIndex + this.size - 1;
+    let i = startIndex;
 
-    if (stack.length >= this.size) {
+    for (; i <= endIndex; i += 1) {
+      if (this.data[i] === undefined) {
+        break;
+      }
+    }
+
+    if (i > endIndex) {
       throw new Error("Stack is already full");
     }
 
-    stack.push(value);
+    this.data[i] = value;
   };
 
   pop = (index) => {
-    const stack = this.data[index];
+    const startIndex = index * this.size;
+    const endIndex = startIndex + this.size - 1;
+    let i = startIndex;
 
-    if (stack.length === 0) {
+    for (; i <= endIndex; i += 1) {
+      if (this.data[i] === undefined) {
+        break;
+      }
+    }
+
+    if (i === startIndex) {
       throw new Error("Stack is empty");
     }
 
-    return stack.pop();
+    const value = this.data[i - 1];
+    this.data[i - 1] = undefined;
+
+    return value;
   };
 
   toArray = () => {
-    return this.data;
+    const result = [];
+
+    for (let i = 0; i < this.data.length; i += 1) {
+      const stackIndex = Math.floor(i / this.size);
+      const stack = result[stackIndex];
+
+      if (stack === undefined) {
+        result.push([this.data[i]]);
+        continue;
+      }
+
+      stack.push(this.data[i]);
+    }
+
+    return result;
   };
 }
 
