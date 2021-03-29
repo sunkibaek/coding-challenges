@@ -28,20 +28,20 @@ class Node {
     this.left = newNode;
   };
 
-  toArray = (prev) => {
+  toArray = () => {
     const result = [];
 
     if (this.left) {
-      result.push(...this.left.toArray([]));
+      result.push(...this.left.toArray());
     }
 
     result.push(this.value);
 
     if (this.right) {
-      result.push(...this.right.toArray([]));
+      result.push(...this.right.toArray());
     }
 
-    return [...prev, ...result];
+    return result;
   };
 }
 
@@ -58,7 +58,7 @@ class BinarySearchTree {
   };
 
   toArray = () => {
-    return this.head.toArray([]);
+    return this.head.toArray();
   };
 }
 
